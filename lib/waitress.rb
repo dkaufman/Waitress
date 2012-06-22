@@ -13,4 +13,8 @@ module Waitress
   def self.announce_new_game
     ping_pub_sub_with('new_game')
   end
+
+  def self.announce_game_end
+    ping_pub_sub_with('game_end')
+  end
 end
