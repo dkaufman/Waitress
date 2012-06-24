@@ -14,4 +14,18 @@ describe "Waitress" do
       Waitress.announce_game_end
     end
   end
+
+  describe "#announce_new_question" do
+    it "sends a new_question ping to the pub_sub_channel" do
+      Waitress.should_receive(:ping_pub_sub_with).with('new_question')
+      Waitress.announce_new_question
+    end
+  end
+
+  describe "announce_times_up" do
+    it "sends a times_up ping to the pub_sub_channel" do
+      Waitress.should_receive(:ping_pub_sub_with).with('times_up')
+      Waitress.announce_times_up
+    end
+  end
 end
