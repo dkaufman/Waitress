@@ -28,4 +28,11 @@ describe "Waitress" do
       Waitress.announce_times_up
     end
   end
+
+  describe "announce_new_response(response)" do
+    it "sends a new_response ping to the pub_sub_channel with the response id" do
+      Waitress.should_receive(:ping_pub_sub_with).with('new_response', 4)
+      Waitress.announce_new_response(double(id: 4))
+    end
+  end
 end

@@ -6,8 +6,8 @@ Pusher.key = ENV['PUSHER_KEY']
 Pusher.secret = ENV['PUSHER_SECRET']
 
 module Waitress
-  def self.ping_pub_sub_with(message)
-    Pusher['ls_trivia'].trigger(message, {})
+  def self.ping_pub_sub_with(message, data=null)
+    Pusher['ls_trivia'].trigger(message, data)
   end
 
   def self.announce_new_game
@@ -24,5 +24,9 @@ module Waitress
 
   def self.announce_times_up
     ping_pub_sub_with('times_up')
+  end
+
+  def self.announce_new_response(response)
+    ping_pub_sub_with('new_response', response.id)
   end
 end
