@@ -26,6 +26,10 @@ module Waitress
     ping_pub_sub_with('times_up')
   end
 
+  def self.announce_new_team
+    ping_pub_sub_with('new_team')
+  end
+
   def self.announce_new_response(response)
     ping_pub_sub_with('new_response', response.id)
   end
